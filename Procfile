@@ -1,0 +1,1 @@
+web: gunicorn positive_affirmation_journal.wsgi:application
