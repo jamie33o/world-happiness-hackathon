@@ -16,7 +16,7 @@ import dj_database_url
 
 
 if os.path.isfile('env.py'):
-     import env
+    import env
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,7 +32,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['affirm-app-057148428853.herokuapp.com', '127.0.0.1', '8000-jamie33o-worldhappiness-m9t891s0owt.ws-eu110.gitpod.io']
+ALLOWED_HOSTS = ['affirm-app-057148428853.herokuapp.com', '127.0.0.1',
+                 '8000-jamie33o-worldhappiness-m9t891s0owt.ws-eu110.gitpod.io']                                                                 
 
 
 # Application definition
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # aws
     'storages',
+    'home',
 ]
 
 # SITE_ID is a setting that specifies the ID of the current site in a multi-site configuration.
@@ -65,7 +67,7 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 # Verifying your email is mandatory so we know users are using a real email.
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
- # And they're gonna be required to enter their email twice on the registration page
+# And they're gonna be required to enter their email twice on the registration page
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 # to make sure that they haven't made any typos.
 
