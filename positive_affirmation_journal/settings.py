@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # aws
     'storages',
+    'home',
 ]
 
 # SITE_ID is a setting that specifies the ID of the current site in a multi-site configuration.
