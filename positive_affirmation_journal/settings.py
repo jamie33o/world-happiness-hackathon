@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['affirm-app-057148428853.herokuapp.com', '127.0.0.1',]
+ALLOWED_HOSTS = ['affirm-app-057148428853.herokuapp.com', '127.0.0.1', '8000-jamie33o-worldhappiness-m9t891s0owt.ws-eu110.gitpod.io']
 
 
 # Application definition
