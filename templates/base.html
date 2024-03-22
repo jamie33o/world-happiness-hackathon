@@ -42,7 +42,7 @@
 
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Acme&family=Dancing+Script:wght@500;600;700&family=Lobster&family=Montserrat:wght@300;500;600;700&family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@300;500;600;700&family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
           
 {% endblock %}
 
@@ -64,8 +64,8 @@
 
     <header class="container-fluid p-0">
       {% block page_header %}
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand mx-auto  text-center " href="{% url 'home' %}">AffirmApp</a>
+      <nav class="bg-success navbar navbar-expand-lg navbar-dark ">
+      <a class=" lobster navbar-brand mx-auto  text-center " href="{% url 'home' %}">AffirmApp</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -78,19 +78,19 @@
               {% if user.is_authenticated %}
                <!-- Display logout link when the user is authenticated -->
                <li class="nav-item">
-                <a class="nav-link {% if request.path == profile_url %}active{% endif %}" aria-current="page" href="">Profile</a>
+                <a class="nav-link text-white {% if request.path == profile_url %}active{% endif %}" aria-current="page" href="">My Affirmatives</a>
               </li> 
                  <li class="nav-item">
-                  <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+                  <a class="text-white nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
                 </li> 
                 {% else %}
                 <!-- Display registration and login links when the user is not authenticated -->
                 <li class="nav-item">
-                  <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                  <a class="text-white nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
                     href="{% url 'account_signup' %}">Register</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
+                  <a class=" text-white nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
                 </li>
                 {% endif %}
             </ul>
@@ -129,7 +129,7 @@
     <footer class="text-center fixed-bottom" id="help">
       {% block page_footer %}
 
-    <p class="footer-text">&copy;24/03-Hackaton-Team3</p>
+    <p class="footer-text lobster">&copy;24/03-Hackaton-Team3</p>
 
       {% endblock %}
     </footer>

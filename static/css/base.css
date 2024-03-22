@@ -1,3 +1,10 @@
+ /* font-family */
+ .lobster{
+    font-family:'Lobster', cursive;
+ }
+.oswald{
+font-family:'Oswald', sans-serif;
+}
 /* //////////////////// allauth templates //////////////////// */
 /* for sign up/sign-in/log-out */
 .all-auth-container {
@@ -94,5 +101,9 @@
     width: 100%;
 }
 .footer-text{
-    font-size:18px;
+    font-size:22px;
+    font-weight: 700;
+}
+.navbar-brand{
+    font-size:24px;
 }
