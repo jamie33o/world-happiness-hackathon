@@ -100,10 +100,26 @@ font-family:'Oswald', sans-serif;
 .user_card .form textarea {
     width: 100%;
 }
+
+/* styles for base html */
 .footer-text{
     font-size:22px;
     font-weight: 700;
 }
+
 .navbar-brand{
     font-size:24px;
 }
+
+ /* styles for home page */
+ .background-image{
+    background-image:url("/static/images/pexels-binti-malu-1485657.jpg");
+    /* background-size: cover;
+    background-position:center;
+    width:100vw;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+   } 
