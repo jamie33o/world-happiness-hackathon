@@ -1,39 +1,49 @@
-**![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# **Positive Affirmations Journal** 🌈
 
-Welcome,
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+## **Welcome Aboard!** ✨
 
-## Codeanywhere Reminders
+Welcome to the *Positive Affirmations Journal* - your new best friend for fostering positivity, mindfulness, and personal growth. Our platform is designed to be an oasis of motivation, allowing you to create, manage, and reflect upon personal affirmations in a supportive environment. Let's embark on this journey to a more positive you!
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+## **Features at a Glance** 🚀
 
-`python3 -m http.server`
+### **Seamless Account Management** 🔐
+- **Create Your Space**: Easily sign up for a personal account.
+- **Secure Access**: Log in/out with ease and recover your password if forgotten.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+### **Affirmations Central** 💖
+- **Voice Your Positivity**: Record and playback your affirmations.
+- **Your Affirmations, Your Way**: Create, update, delete, and store affirmations.
+- **Organize with Ease**: Categorize affirmations for streamlined navigation.
+- **Reflect on Your Journey**: View past entries to witness your growth.
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+### **Customize Your Experience** 🌟
+- **Never Miss a Beat**: Set reminders for daily affirmations.
+- **Set the Mood**: Listen to meditation music while engaging with your affirmations.
+- **Visual Delight**: Customize background images to inspire.
+- **A Joy to Use**: Navigate through a user-friendly interface designed for enjoyment.
 
-`http_server`
+### **Connect and Share** 🤝
+- **Personal Touch**: Manage your information with ease.
+- **Discover and Explore**: Navigate the home page for a seamless experience.
+- **Spread the Positivity**: Share affirmations with friends for that extra support.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## **Getting Started** 🌱
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+1. **Download the App**: Download the app. 
+2. **Create Your Account**: Quick sign-up to start your positivity journey.
+3. **Dive into Features**: Customize your app experience to match your vibe.
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## **Need Help?** 🆘
 
-To log into the Heroku toolbelt CLI:
+Hit us up at [support@email.com](mailto:support@email.com). We're all ears!
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+## **Join the Movement** 👐
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+Got ideas? Want to contribute? Let's make something amazing together. Check out our contribution guidelines for more info.
 
----
+## **License** 📜
 
-Happy coding!
+This project is *all* about sharing and caring, licensed under [License Name].
+
