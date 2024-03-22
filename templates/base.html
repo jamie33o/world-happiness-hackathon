@@ -60,7 +60,7 @@
 
     <title>{% block extra_title %}{% endblock %}</title>
   </head>
-  <body class="d-flex flex-column h-100 ">
+  <body class="d-flex flex-column justify-content-center  h-100  ">
 
     <header class="container-fluid p-0">
       {% block page_header %}
@@ -126,10 +126,10 @@
       {% endblock %}    
     </main>
 
-    <footer class="text-center fixed-bottom" id="help">
+    <footer class="text-center " id="help">
       {% block page_footer %}
 
-    <p class="footer-text lobster">&copy;24/03-Hackaton-Team3</p>
+    <p class="footer-text text-white bg-success  lobster">&copy;24/03-Hackaton-Team3</p>
 
       {% endblock %}
     </footer>
@@ -155,7 +155,7 @@
         
 
        
-        $('#cookies-modal').modal('show');
+        // $('#cookies-modal').modal('show');
          
     });
    

@@ -5,6 +5,7 @@
 .oswald{
 font-family:'Oswald', sans-serif;
 }
+
 /* //////////////////// allauth templates //////////////////// */
 /* for sign up/sign-in/log-out */
 .all-auth-container {
@@ -105,21 +106,20 @@ font-family:'Oswald', sans-serif;
 .footer-text{
     font-size:22px;
     font-weight: 700;
+    margin:0;
 }
 
 .navbar-brand{
-    font-size:24px;
+    font-size:28px;
+    letter-spacing:2px;
 }
 
  /* styles for home page */
  .background-image{
-    background-image:url("/static/images/pexels-binti-malu-1485657.jpg");
-    /* background-size: cover;
-    background-position:center;
     width:100vw;
-    height:100%;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
+    height:100vh;
+    background-size: cover;
+    background-position:center;
+    overflow: hidden;
+
    } 
