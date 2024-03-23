@@ -8,6 +8,7 @@ from .forms import AudioRecordingForm, TextAffirmationsForm
 
 @login_required
 def affirmation_page(request):
+
     form = AudioRecordingForm()
     recordings = AudioRecording.objects.filter(user=request.user)
     return render(request, 'affirmations/affirmations.html',
