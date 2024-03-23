@@ -15,6 +15,10 @@
 font-family:'Oswald', sans-serif;
 }
 
+.messages{
+    z-index: 100;
+}
+
 /* //////////////////// allauth templates //////////////////// */
 /* for sign up/sign-in/log-out */
 .all-auth-container {
