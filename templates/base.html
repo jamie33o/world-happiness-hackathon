@@ -65,7 +65,7 @@
 
     <header class="container-fluid p-0 ">
       {% block page_header %}
-      <nav class="bg-success navbar navbar-expand-lg navbar-dark ">
+      <nav class="bg-success navbar navbar-expand-lg navbar-dark px-4">
       <a class=" lobster navbar-brand mx-auto  text-center " href="{% url 'home' %}">AffirmApp</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -73,25 +73,25 @@
           <div class="collapse navbar-collapse justify-content-end"  id="navbarSupportedContent">
             <ul class="navbar-nav  mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="oswald nav-link   {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                <a class="oswald nav-link {% if home_url == request.path %}text-white{% endif %}" aria-current="page"
                             href="{% url 'home' %}">Home</a>
               </li>
               {% if user.is_authenticated %}
                <!-- Display logout link when the user is authenticated -->
                <li class="nav-item">
-                <a class="oswald nav-link text-white {% if request.path == affirmations_url %}active{% endif %}" aria-current="page" href="{% url 'affirmations' %}">My Affirmatives</a>
+                <a class="oswald nav-link {% if 'affirmations' in request.path %}text-white{% endif %}" aria-current="page" href="{% url 'affirmations' %}">My Affirmatives</a>
               </li> 
                  <li class="nav-item">
-                  <a class="oswald text-white nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+                  <a class="oswald nav-link {% if 'logout' in request.path %}text-white{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
                 </li> 
                 {% else %}
                 <!-- Display registration and login links when the user is not authenticated -->
                 <li class="nav-item">
-                  <a class="oswald text-white nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                  <a class="oswald nav-link {% if 'signup' in request.path %}text-white{% endif %}" aria-current="page"
                     href="{% url 'account_signup' %}">Register</a>
                 </li>
                 <li class="nav-item">
-                  <a class="oswald text-white nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
+                  <a class="oswald nav-link {% if 'login' in request.path %}text-white{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
                 </li>
                 {% endif %}
             </ul>

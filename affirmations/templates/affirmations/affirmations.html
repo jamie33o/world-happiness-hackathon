@@ -4,9 +4,9 @@
 
     <div class="background-image">
         <div class="container-fluid p-2 p-lg-5">
-            <div class="row">
-                <div class="col-12 col-lg-6">
-                    <div class=" bg-light border rounded p-5">
+            <div class="row m-0 p-0">
+                <div class="col-12 col-lg-6 mt-5 mt-lg-0">
+                    <div class="h-300 bg-light border rounded p-5">
                         <h3>Record Positive Affirmation</h3>
                         <div id='gUMArea' class="h5">
                             Record: <span id="timer">00:00:00</span>
@@ -17,8 +17,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-6">
-                    <div class="bg-secondary h-50 overflow-auto">
+                <div class="col-12 col-lg-6 mt-5 mt-lg-0">
+                    <div class="bg-secondary h-300 overflow-auto">
                         <h3 class="text-center text-white my-2">Recorded Affirmations</h3>
                         <ul class="list-unstyled p-2 " id='ul'>
                             {% for recording in recordings %}

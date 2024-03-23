@@ -123,11 +123,9 @@ font-family:'Oswald', sans-serif;
  /* styles for home page */
  .background-image{
     background-image:url("/static/images/background-image.avif");
-    width:100vw;
     height:100vh;
     background-size: cover;
     background-position:center;
-    overflow-x: hidden;
 } 
 
 .main-heading{
@@ -144,7 +142,6 @@ font-family:'Oswald', sans-serif;
 }
 
 .btn {
-    margin-top: 10px;
     width: 80%;
     opacity: 0.9;
     font-weight: 700;
@@ -176,6 +173,10 @@ font-family:'Oswald', sans-serif;
 }
 h2{
     background-color: #3a5a40;
+}
+
+.h-300 {
+    height: 300px;
 }
 
 /*  styles for bigger screen sizes */
