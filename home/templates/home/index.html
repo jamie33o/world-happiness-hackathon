@@ -1,54 +1,25 @@
 {% extends 'base.html'%}
 {% load static %}
 
-{% block extra_js %}
-    
-{% endblock %}
-
 {% block content %}
 
 <div class="container-fluid">
-    <div class="row">
+   <div class="row">
       <!-- Background Image Section -->
-        <div class="background-image mx-auto ">
-          <div class="ml-5 mt-5 position-absolute bg-light border rounded p-5">
-            <h1> Record Positive Affirmation</h1>
-            <div id='gUMArea'>
-              Record:
+      <div class="background-image mx-auto  ">
+          <!-- Main Heading -->
+          <header class="main-heading text-center oswald text-dark p-3 mt-5 bg-warning ">Welcome to Your Oasis of Positivity !</header>
+          <!-- Main Content Section -->
+              <p class="main-message mx-auto montserrat  p-3 mt-3 bg-white text-center rounded">At AffirmApp, we're dedicated to helping you unlock your full potential and embrace a life filled with positivity, purpose, and personal growth. Our mission is to provide you with the tools, resources, and support you need to thrive in every aspect of your life.</p>
+          <!-- About Us Section -->
+          <section class="text-center pt-3 mb-2 about-us mw-100 mx-auto my-auto mt-2 montserrat">
+              <p class="about-us-text mw-100 mx-auto my-auto bg-danger rounded p-3">With [Your App Name], you have the power to write and store your personalized affirmations. Express your unique aspirations, goals, and dreams in your own words, and revisit them whenever you need a boost of positivity and motivation. Stay motivated and inspired as you witness the positive changes unfolding in your life.</p>
+          </section>
+          <div class="text-center">
+            <h2 class="text-white bg-success mt-3">Start Your Journey Today</h2>
+            <a href="{% url 'affirmations' %}" class="btn btn-light btn-lg lobster d-block mx-auto mt-3" aria-label="my affirmatives">My Affirmatives</a>
             </div>
-            <div id='btns'>
-              <button  class="btn btn-success" id='start'>Start</button>
-              <button  class="btn btn-danger" id='stop'>Stop</button>
-            </div>
-            <div>
-              
-              <ul  class="list-unstyled" id='ul'>
-                {% for recording in recordings %}
-                <li>
-                <audio controls>
-                  <source src="{{recording.audio_file.url}}" type="audio/mpeg">
-                  Your browser does not support the audio element.
-                </audio>
-              </li>
-                
-                {% endfor%}
-              </ul>
-              
-            </div>
-            <button data-url="{% url 'upload_recording' %}" data-csrf="{{csrf_token }}" class="audio-upload btn btn-primary">Save</button>
-
-          </div>
-          <img src="{% static 'images/pexels.jpg' %}" alt="Background Image">
         </div>
     </div>
 </div>
-
-
-
-{% endblock content %}
-
-{% block postloadjs %}
-<script src="{% static 'js/record.js' %}"> </script>
-
-{% endblock  %}
-    
+  {% endblock content %}

@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # aws
     'storages',
+    # apps
+    'affirmations',
     'home',
 ]
 

@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path("", include("home.urls")),
+    path("affirmations/", include("affirmations.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,
