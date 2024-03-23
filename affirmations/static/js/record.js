@@ -99,7 +99,7 @@ function makeLink(){
   li.appendChild(mt);
   li.appendChild(hf);
   $(li).append(`<button data-url="upload_recording/" class="audio-upload btn-primary btn-sm ml-3">Save</button>`)
-  ul.appendChild(li);
+  $(ul).prepend(li);
  
   // Create a File object
   let file = new File([blob], hf.innerHTML);
