@@ -10,3 +10,13 @@ class AudioRecording(models.Model):
 
     def __str__(self):
         return self.title 
+
+
+class TextAffirmations(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    message = models.CharField(max_length=254, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    recording = models.ForeignKey(AudioRecording, on_delete=models.DO_NOTHING, null=True, blank=True)
+
+
+    
