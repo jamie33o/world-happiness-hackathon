@@ -21,18 +21,24 @@
                     <div class="bg-secondary h-300 overflow-auto">
                         <h3 class="text-center text-white my-2">Recorded Affirmations</h3>
                         <ul class="list-unstyled p-2 " id='ul'>
-                            {% for recording in recordings %}
-                                <li class="border p-2 my-auto">
-                                <audio controls>
-                                    <source src="{{recording.audio_file.url}}" type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                                </audio>
-                                <form id="deleteForm" action="{% url 'delete_recording' recording.id %}" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit" class=" btn-sm btn-danger">Delete</button>
-                                  </form>
-                                </li>
-                            {% endfor%}
+                            {% if recordings %}
+
+                                {% for recording in recordings %}
+                                    <li class="border p-2 my-auto">
+                                    <audio controls>
+                                        <source src="{{recording.audio_file.url}}" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                    <form id="deleteForm" action="{% url 'delete_recording' recording.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class=" btn-sm btn-danger">Delete</button>
+                                    </form>
+                                    </li>
+                                {% endfor%}
+                            {% else %}
+                            <h3 class="h1 text-center my-5 text-white">Record Your First Affirmation</h3>
+                            {% endif %}
+
                         </ul>
                     </div>
                 </div>

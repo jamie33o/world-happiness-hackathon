@@ -50,6 +50,11 @@ def group_affirmations(request):
         if form.is_valid():
             text_affirmation = form.save(commit=False)
             text_affirmation.user = request.user
+            recording_id = request.POST.get('recording_id')  
+
+            if recording_id:
+                recording = get_object_or_404(AudioRecording, id=recording_id)
+                text_affirmation.recording = recording
             text_affirmation.save()
             messages.success(request, 'Message sent successfully.')
             return redirect('group_affirmations')
@@ -57,8 +62,9 @@ def group_affirmations(request):
         return redirect('group_affirmations')
     else:
         text_affirmations = TextAffirmations.objects.all()
-
+        recordings = AudioRecording.objects.filter(user=request.user)
         context = {
+            'recordings': recordings,
             'text_affirmations': text_affirmations   
             }
 
@@ -80,7 +86,7 @@ def delete_message(request, message_id):
 @login_required
 def edit_message(request, message_id):
     message = get_object_or_404(TextAffirmations, id=message_id)
-    
+
     if request.method == 'POST':
         form = TextAffirmationsForm(request.POST, instance=message)
         if form.is_valid():

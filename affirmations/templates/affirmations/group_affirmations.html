@@ -13,106 +13,119 @@
         <div class="row m-0"> 
             <div class="col-12">
                 <div class="chatbody border">
-                    {% for affirmation in text_affirmations %}
-                    <div class="border">   
-                        <div class="row p-2">
-                            <div class="col-md-2 col-xs-2">
-                                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" width="80" class=" rounded-circle img-responsive ">
-                            </div>
-                            <div class="col-md-10 col-xs-10">
-                                <div class="d-flex flex-dir-row justify-content-between">
-                                    <div>
-                                        <p class="h3 fw-bold d-inline">{{ affirmation.user|capfirst }} </p>
-                                        <time datetime="2009-11-13T20:00" class="m-3"> {{ affirmation.created_at }}</time>
-                                    </div>
-                                    <div>
-                                        {% if affirmation.user == request.user %}
-                                        <button type="button" class="btn-info btn-sm m-2" data-bs-toggle="modal" data-bs-target="#edit-modal{{ affirmation.id }}">
-                                            <i class="fa fa-pencil fa-2x" type="submit" aria-hidden="true"></i>
-                                        </button>   
-                                        <button type="button"  class="btn-danger btn-sm m-2" data-bs-toggle="modal" data-bs-target="#delete-modal{{ affirmation.id }}">
-                                            <i class="fa fa-x fa-2x" type="submit" aria-hidden="true"></i>
-                                        </button>                                   
-                                        {% endif %}
-                                    </div>
+                    {% if text_affirmations %}
+
+                        {% for affirmation in text_affirmations %}
+                        <div class="border">   
+                            <div class="row p-2">
+                                <div class="col-md-2 col-xs-2">
+                                    <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" width="80" class=" rounded-circle img-responsive ">
                                 </div>
-                                <p class="mt-3 h3 fw-normal">{{ affirmation.message }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    {% if affirmation.user == request.user %}
-                    <!-- delete Modal -->
-                    <div class="modal fade" id="delete-modal{{ affirmation.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Delete Message</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
                                 <div class="col-md-10 col-xs-10">
                                     <div class="d-flex flex-dir-row justify-content-between">
                                         <div>
                                             <p class="h3 fw-bold d-inline">{{ affirmation.user|capfirst }} </p>
                                             <time datetime="2009-11-13T20:00" class="m-3"> {{ affirmation.created_at }}</time>
+                                        </div>
+                                        <div>
+                                            {% if affirmation.user == request.user %}
+                                            <button type="button" class="btn-info btn-sm m-2" data-bs-toggle="modal" data-bs-target="#edit-modal{{ affirmation.id }}">
+                                                <i class="fa fa-pencil fa-2x" type="submit" aria-hidden="true"></i>
+                                            </button>   
+                                            <button type="button"  class="btn-danger btn-sm m-2" data-bs-toggle="modal" data-bs-target="#delete-modal{{ affirmation.id }}">
+                                                <i class="fa fa-x fa-2x" type="submit" aria-hidden="true"></i>
+                                            </button>                                   
+                                            {% endif %}
                                         </div>
                                     </div>
                                     <p class="mt-3 h3 fw-normal">{{ affirmation.message }}</p>
+                                    {% if affirmation.recording %}
+                                        <audio controls>
+                                            <source src="{{affirmation.recording.audio_file.url}}" type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                        </audio>  
+                                    {% endif %}
+                                
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn-warning btn-sm m-2" data-bs-dismiss="modal">Cancel</button>
-                            
-                            <form id="deleteForm" action="{% url 'delete_message' affirmation.id %}" method="post">
-                                {% csrf_token %}
-                                <button class="btn-danger btn-sm m-2" type="submit">Delete</button>
-                            </form>
-                            </div>
                         </div>
-                        </div>
-                    </div>
                     
-                    <!-- edit Modal -->
-                    <div class="modal fade" id="edit-modal{{ affirmation.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit Message</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="col-md-10 col-xs-10">
-                                    <div class="d-flex flex-dir-row justify-content-between">
-                                        <div>
-                                            <p class="h3 fw-bold d-inline">{{ affirmation.user|capfirst }} </p>
-                                            <time datetime="2009-11-13T20:00" class="m-3"> {{ affirmation.created_at }}</time>
+                        {% if affirmation.user == request.user %}
+                        <!-- delete Modal -->
+                        <div class="modal fade" id="delete-modal{{ affirmation.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Delete Message</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="d-flex flex-dir-row justify-content-between">
+                                            <div>
+                                                <p class="h3 fw-bold d-inline">{{ affirmation.user|capfirst }} </p>
+                                                <time datetime="2009-11-13T20:00" class="m-3"> {{ affirmation.created_at }}</time>
+                                            </div>
                                         </div>
+                                        <p class="mt-3 h3 fw-normal">{{ affirmation.message }}</p>
                                     </div>
                                 </div>
-                                <form id="deleteForm" action="{% url 'edit_message' affirmation.id %}" method="post">
-                                    {% csrf_token %}
-                                    <textarea id="btn-input" class="form-control chat_input" name="message" rows="4">{{ affirmation.message }}</textarea>
-
-                                    
-                                    <button class="btn-danger btn-sm m-2" type="submit">Update</button>
-                                </form>
+                                <div class="modal-footer">
+                                <button type="button" class="btn-warning btn-sm m-2" data-bs-dismiss="modal">Cancel</button>
                                 
+                                <form id="deleteForm" action="{% url 'delete_message' affirmation.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button class="btn-danger btn-sm m-2" type="submit">Delete</button>
+                                </form>
+                                </div>
                             </div>
-    
+                            </div>
                         </div>
+                        
+                        <!-- edit Modal -->
+                        <div class="modal fade" id="edit-modal{{ affirmation.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Message</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="d-flex flex-dir-row justify-content-between">
+                                            <div>
+                                                <p class="h3 fw-bold d-inline">{{ affirmation.user|capfirst }} </p>
+                                                <time datetime="2009-11-13T20:00" class="m-3"> {{ affirmation.created_at }}</time>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <form id="deleteForm" action="{% url 'edit_message' affirmation.id %}" method="post">
+                                        {% csrf_token %}
+                                        <textarea id="btn-input" class="form-control chat_input" name="message" rows="4">{{ affirmation.message }}</textarea>
+
+                                        <button class="btn-danger btn-sm m-2" type="submit">Update</button>
+                                    </form>
+                                </div>
+                            </div>
+                            </div>
                         </div>
-                    </div>
-                    {% endif%}
-                    {% endfor %}
+                        {% endif%}
+                        {% endfor %}
+                    {% else %}
+                        <h3 class="h1 text-center my-5">Add the First Group Affirmation</h3>
+                    {% endif %}
 
                     <div class="panel-footer">
-                        <form method="post" action="{% url 'group_affirmations' %}">
+                        <form method="post" action="{% url 'group_affirmations' %}" id="message-form">
                             {% csrf_token %}
-                            <div class="input-group">
+                            <div class="input-group p-2">
 
                                 <input id="btn-input" type="text" class="form-control input-sm chat_input" name="message" placeholder="Write your message here..." />
                                 <span class="input-group-btn">
-                                <button class="btn-primary btn w-100" id="btn-chat"><i class="fa fa-send fa-1x" type="submit" aria-hidden="true"></i></button>
+                                <button class="btn-primary btn w-100 p-0" id="btn-chat"><i class="fa fa-send fa-1x" type="submit" aria-hidden="true"></i></button>
+                                <button type="button"  class="btn-danger btn w-100 p-0" data-bs-toggle="modal" data-bs-target="#attach-modal">
+                                    <i class="fa fa-plus fa-1x" type="submit" aria-hidden="true"></i>
+                                </button>  
                                 </span>
                             </div>
                         </form>
@@ -123,4 +136,44 @@
     </div>
 </div>
 
+
+   <!-- attachment Modal -->
+   <div class="modal fade" id="attach-modal{{ affirmation.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Attach Recording</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+           
+                {% if recordings %}
+                <ul class="list-unstyled p-2 " id='ul'>
+                    {% for recording in recordings %}
+                        <li class="border p-2 my-auto">
+                        <audio controls>
+                            <source src="{{recording.audio_file.url}}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <button type="button" data-id="{{ recording.id}}" class="btn-warning btn-sm m-2 add-btn" data-bs-dismiss="modal">Add</button>
+                        </li>
+                    {% endfor%}
+                    </ul>
+                {% else %}
+                <h3 class="h1 text-center my-5">No Recordings</h3>
+                {% endif %}
+        </div>
+    </div>
+    </div>
+</div>
 {% endblock %}
+
+{% block postloadjs %}
+<script>
+    $('.add-btn').click(function(){
+        let id = $(this).data('id')
+        $('#message-form').append(`<input type="text" name="recording_id" readonly value="${id}"/>`);
+    })
+</script>
+{% endblock %}
+
