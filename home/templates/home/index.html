@@ -1,14 +1,54 @@
 {% extends 'base.html'%}
 {% load static %}
+
+{% block extra_js %}
+    
+{% endblock %}
+
 {% block content %}
 
 <div class="container-fluid">
     <div class="row">
       <!-- Background Image Section -->
         <div class="background-image mx-auto ">
+          <div class="ml-5 mt-5 position-absolute bg-light border rounded p-5">
+            <h1> Record Positive Affirmation</h1>
+            <div id='gUMArea'>
+              Record:
+            </div>
+            <div id='btns'>
+              <button  class="btn btn-success" id='start'>Start</button>
+              <button  class="btn btn-danger" id='stop'>Stop</button>
+            </div>
+            <div>
+              
+              <ul  class="list-unstyled" id='ul'>
+                {% for recording in recordings %}
+                <li>
+                <audio controls>
+                  <source src="{{recording.audio_file.url}}" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+              </li>
+                
+                {% endfor%}
+              </ul>
+              
+            </div>
+            <button data-url="{% url 'upload_recording' %}" data-csrf="{{csrf_token }}" class="audio-upload btn btn-primary">Save</button>
+
+          </div>
           <img src="{% static 'images/pexels.jpg' %}" alt="Background Image">
         </div>
-        </div>
-        </div>
+    </div>
+</div>
+
+
 
 {% endblock content %}
+
+{% block postloadjs %}
+<script src="{% static 'js/record.js' %}"> </script>
+
+{% endblock  %}
+    
