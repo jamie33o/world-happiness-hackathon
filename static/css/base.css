@@ -115,6 +115,9 @@ font-family:'Oswald', sans-serif;
     width: 100%;
 }
 
+.h-300 {
+    height: 300px;
+}
 /* styles for base html */
 .footer-text{
     font-size:22px;
@@ -181,10 +184,6 @@ font-family:'Oswald', sans-serif;
 .start-journey{
     background-color: #168aad;
     color:yellow;
-}
-
-.h-300 {
-    height: 300px;
 }
 
 /* styles for profile page */
