@@ -1,8 +1,9 @@
 from django.http import JsonResponse
-from django.shortcuts import render
-from .forms import AudioRecordingForm
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib import messages
 from .models import AudioRecording
+from .forms import AudioRecordingForm
 
 def affirmation_page(request):
     form = AudioRecordingForm()
@@ -28,3 +29,16 @@ def upload_recording(request):
             return JsonResponse({'error': 'Method not allowed'}, status=405)
     except Exception as e:
         print(e)
+
+
+
+def delete_recording(request, recording_id):
+    recording = get_object_or_404(AudioRecording, id=recording_id)
+
+    if request.method == 'POST':
+        recording.delete()
+        messages.success(request, 'Recording deleted successfully.')
+        return redirect('affirmations')
+    messages.error(request, 'Error could not delete recording')
+
+    return render(request, 'confirm_delete.html', {'recording': recording})

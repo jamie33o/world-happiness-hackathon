@@ -2,39 +2,44 @@
 {% load static %}
 {% block content %}
 
-
-    <div class="background-image mx-auto ">
-        <div class="ml-5 mt-5 position-absolute bg-light border rounded p-5">
-            <h1> Record Positive Affirmation</h1>
-            <div id='gUMArea'>
-              Record:
+    <div class="background-image">
+        <div class="container-fluid p-2 p-lg-5">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class=" bg-light border rounded p-5">
+                        <h3>Record Positive Affirmation</h3>
+                        <div id='gUMArea' class="h5">
+                            Record: <span id="timer">00:00:00</span>
+                        </div>
+                        <div id='btns'>
+                            <button  class="btn btn-success" id='start'>Record</button>
+                            <button  class="btn btn-danger" id='stop'>Stop</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="bg-secondary h-50 overflow-auto">
+                        <h3 class="text-center text-white my-2">Recorded Affirmations</h3>
+                        <ul class="list-unstyled p-2 " id='ul'>
+                            {% for recording in recordings %}
+                                <li class="border p-2 my-auto">
+                                <audio controls>
+                                    <source src="{{recording.audio_file.url}}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                                <form id="deleteForm" action="{% url 'delete_recording' recording.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class=" btn-sm btn-danger">Delete</button>
+                                  </form>
+                                </li>
+                            {% endfor%}
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div id='btns'>
-              <button  class="btn btn-success" id='start'>Start</button>
-              <button  class="btn btn-danger" id='stop'>Stop</button>
-            </div>
-            <div>
-                <ul  class="list-unstyled" id='ul'>
-                    {% for recording in recordings %}
-                        <li>
-                        <audio controls>
-                            <source src="{{recording.audio_file.url}}" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                        </li>
-                    {% endfor%}
-                </ul>
-            </div>
-            <button data-url="{% url 'upload_recording' %}" data-csrf="{{csrf_token }}" class="audio-upload btn btn-primary">Save</button>
-
-          </div>
-          <img src="{% static 'images/pexels.jpg' %}" alt="Background Image">
         </div>
     </div>
-</div>
-
-
-
+     
 {% endblock content %}
 
 {% block postloadjs %}

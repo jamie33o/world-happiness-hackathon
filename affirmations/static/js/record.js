@@ -6,15 +6,23 @@ let log = console.log.bind(console),
   gUMbtn = id('gUMbtn'),
   start = id('start'),
   stop = id('stop'),
+  timer = id('timer'),
   stream,
   recorder,
+  timerInterval,  
+  running,
+  seconds = 0,
+  minutes = 0,
+  hours = 0,
   counter=1,
+
   chunks,
+  formData,
   media = {
     tag: 'audio',
     type: 'audio/ogg',
     ext: '.ogg',
-    gUM: {audio: true}
+    gUM: {audio: true},
   };
 
   navigator.mediaDevices.getUserMedia(media.gUM).then(_stream => {
@@ -35,16 +43,45 @@ start.onclick = e => {
   stop.removeAttribute('disabled');
   chunks=[];
   recorder.start();
+  toggleTimer()
 }
-
 
 stop.onclick = e => {
   stop.disabled = true;
   recorder.stop();
   start.removeAttribute('disabled');
+  toggleTimer()
 }
 
-let formData
+function updateTimer() {
+  seconds++;
+  if (seconds >= 60) {
+      seconds = 0;
+      minutes++;
+      if (minutes >= 60) {
+          minutes = 0;
+          hours++;
+      }
+  }
+  timer.innerHTML = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds);
+}
+
+function formatTime(time) {
+  return time < 10 ? "0" + time : time;
+}
+
+function toggleTimer() {
+  if (running) {
+      clearInterval(timerInterval);
+      running = false;
+      hours = 0;
+      minutes = 0;
+      seconds = 0;
+  } else {
+      timerInterval = setInterval(updateTimer, 1000);
+      running = true;
+  }
+}
 
 function makeLink(){
   let blob = new Blob(chunks, {type: media.type })
@@ -55,32 +92,27 @@ function makeLink(){
   ;
   mt.controls = true;
   mt.src = url;
-  
-   
 
   hf.href = url;
   hf.download = `${counter++}${media.ext}`;
   hf.innerHTML = `donwload ${hf.download}`;
   li.appendChild(mt);
   li.appendChild(hf);
+  $(li).append(`<button data-url="upload_recording/" class="audio-upload btn-primary btn-sm ml-3">Save</button>`)
   ul.appendChild(li);
  
+  // Create a File object
+  let file = new File([blob], hf.innerHTML);
 
-
-   // Create a File object
-   let file = new File([blob], hf.innerHTML);
-
-   // Create a new FormData object and append the File object
-    formData = new FormData();
-   formData.append('audio_file', file);
-
-
+  // Create a new FormData object and append the File object
+  formData = new FormData();
+  formData.append('audio_file', file);
 }
 
    
-$('.audio-upload').click(function(){
+$(document).on('click', '.audio-upload', function(){
+  let self = $(this)
     let url = $(this).data('url')
-    let csrf = $(this).data('csrf')
     $.ajax({
         url: url, 
         type: 'POST',
@@ -89,8 +121,7 @@ $('.audio-upload').click(function(){
         contentType: false,
      //    headers: {'X-CSRFToken': csrf}, 
         success: function(response) {
-            console.log('File uploaded successfully:', response);
-            // Handle success response
+            self.replaceWith(`<p>Saved</p>`)
         },
         error: function(xhr, status, error) {
             console.error('There was a problem with the file upload:', error);
