@@ -1,3 +1,9 @@
+ *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+ }
+ 
  /* font-family */
  .lobster{
     font-family:'Lobster', cursive;
@@ -116,10 +122,33 @@ font-family:'Oswald', sans-serif;
 
  /* styles for home page */
  .background-image{
+    background-image:url("/static/images/background-image.jpg");
     width:100vw;
     height:100vh;
     background-size: cover;
     background-position:center;
     overflow: hidden;
+} 
 
-   } 
+.main-heading{
+    color:black; 
+    font-size:38px;
+    font-weight:700;
+    border-radius:9px;
+    width:100%;
+    display:inline-block;
+    align-self:self-start;
+}
+
+.btn{
+    margin-top:10px;
+    width:80%;
+    opacity:0.9;
+    Font-weight:700;
+    letter-spacing:2px;
+    color:black;
+    background-color:#ffb703; 
+    border-radius:9px;
+    font-size:30px;
+    border: 2px dotted black;
+}
