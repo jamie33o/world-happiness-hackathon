@@ -116,39 +116,89 @@ font-family:'Oswald', sans-serif;
 }
 
 .navbar-brand{
-    font-size:28px;
+    font-size:35px;
     letter-spacing:2px;
 }
 
  /* styles for home page */
  .background-image{
-    background-image:url("/static/images/background-image.jpg");
+    background-image:url("/static/images/background-image.avif");
     width:100vw;
     height:100vh;
     background-size: cover;
     background-position:center;
-    overflow: hidden;
+    overflow-x: hidden;
 } 
 
 .main-heading{
     color:black; 
-    font-size:38px;
+    font-size:28px;
     font-weight:700;
     border-radius:9px;
     width:100%;
-    display:inline-block;
-    align-self:self-start;
+    opacity: 0.9;
 }
 
-.btn{
-    margin-top:10px;
-    width:80%;
-    opacity:0.9;
-    Font-weight:700;
-    letter-spacing:2px;
-    color:black;
+.main-message{
+    background-color:#fdf0d5;
+}
+
+.btn {
+    margin-top: 10px;
+    width: 80%;
+    opacity: 0.9;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: black;
     background-color:#ffb703; 
-    border-radius:9px;
-    font-size:30px;
+    border-radius: 9px;
+    font-size: 22px;
     border: 2px dotted black;
 }
+
+.text{
+    font-size:18px;
+    font-weight:500;
+}
+
+.span-text{
+    font-size:20px;
+    font-weight:700;
+}
+
+.nav-link{
+    font-size:18px;
+    font-weight:600;
+}
+
+.nav-link:hover{
+    color:yellow !important;
+}
+h2{
+    background-color: #3a5a40;
+}
+
+/*  styles for bigger screen sizes */
+@media only screen and (min-width:767px) {
+    .nav-link, .text{
+        font-size:22px;
+    }
+    .main-heading{
+        font-size:35px;
+    }
+    .navbar-brand{
+        font-size:38px;
+    }
+    .btn{
+        font-size:28px;
+    }
+    .text{
+        width:500px;
+    }
+    .main-heading,h2{
+        width:70%;
+     }
+     .btn{
+        width:30%;
+     }
+    } 
