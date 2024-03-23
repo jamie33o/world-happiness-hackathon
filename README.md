@@ -1,4 +1,4 @@
-# **SkyNet Positive Affirmations App** 🌈
+# **SkyNet Positive Affirmations Journal** 🌈
 
 ## **Welcome Aboard!** ✨
 
