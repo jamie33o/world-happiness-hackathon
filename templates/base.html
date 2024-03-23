@@ -65,7 +65,7 @@
 
     <title>{% block extra_title %}{% endblock %}</title>
   </head>
-  <body class="d-flex flex-column justify-content-center h-100">
+  <body class="d-flex flex-column h-100">
 
     <header class="container-fluid p-0 ">
       {% block page_header %}
@@ -120,7 +120,7 @@
       
       {% for message in messages %}
         <div class="messages position-absolute m-4">
-            <div class="alert bg-{% if not message.tags == 'error' %}{{message.tags}}{% else %}danger{% endif %} mx-auto">
+            <div class="mx-auto alert bg-{% if not message.tags == 'error' %}{{message.tags}}{% else %}danger{% endif %} mx-auto">
                 <strong>{{message.tags}}</strong>
                 <hr class="message-inner-separator">
                 <p>

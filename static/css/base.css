@@ -115,6 +115,9 @@ font-family:'Oswald', sans-serif;
     width: 100%;
 }
 
+.h-300 {
+    height: 300px;
+}
 /* styles for base html */
 .footer-text{
     font-size:22px;
@@ -183,8 +186,15 @@ font-family:'Oswald', sans-serif;
     color:yellow;
 }
 
-.h-300 {
-    height: 300px;
+/* styles for profile page */
+.details{
+    font-size:18px;
+    font-weight:700;
+}
+
+.details-span{
+    font-size:"20px";
+    color:red;
 }
 
 /*  styles for bigger screen sizes */
