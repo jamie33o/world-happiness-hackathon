@@ -78,7 +78,7 @@
               {% if user.is_authenticated %}
                <!-- Display logout link when the user is authenticated -->
                <li class="nav-item">
-                <a class="oswald nav-link text-white {% if request.path == affirmations_url %}active{% endif %}" aria-current="page" href="">My Affirmatives</a>
+                <a class="oswald nav-link text-white {% if request.path == affirmations_url %}active{% endif %}" aria-current="page" href="{% url 'affirmations' %}">My Affirmatives</a>
               </li> 
                  <li class="nav-item">
                   <a class="oswald text-white nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
