@@ -8,6 +8,10 @@
 
 {% url 'home' as home_url %}
 
+{% url 'profile' as profile_url %}
+
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -61,7 +65,7 @@
 
     <title>{% block extra_title %}{% endblock %}</title>
   </head>
-  <body class="d-flex flex-column justify-content-center  h-100  ">
+  <body class="d-flex flex-column justify-content-center  ">
 
     <header class="container-fluid p-0 ">
       {% block page_header %}
@@ -81,6 +85,10 @@
                <li class="nav-item">
                 <a class="oswald nav-link text-white {% if request.path == affirmations_url %}active{% endif %}" aria-current="page" href="{% url 'affirmations' %}">My Affirmatives</a>
               </li> 
+              <li class="nav-item">
+                <a class="oswald nav-link text-white {% if request.path == profile_url %}active{% endif %}" aria-current="page" href="{% url 'profile' %}">Profile</a>
+              </li> 
+
                  <li class="nav-item">
                   <a class="oswald text-white nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
                 </li> 
@@ -128,7 +136,7 @@
     <footer class="text-center" id="help">
       {% block page_footer %}
 
-    <p class="footer-text text-white bg-success  lobster p-3">&copy;24/03-Hackaton-Team3</p>
+    <p class="mt-auto footer-text text-white bg-success  lobster p-3">&copy;24/03-Hackaton-Team3</p>
 
       {% endblock %}
     </footer>

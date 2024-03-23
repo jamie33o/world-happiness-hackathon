@@ -23,6 +23,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path("", include("home.urls")),
     path("affirmations/", include("affirmations.urls")),
+    path("myprofile/", include('myprofile.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL,
