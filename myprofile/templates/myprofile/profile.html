@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid profile-container">
+    <div class="row h-100  montserrat">
+        <div class="col-12">
+             <h2 class="text-center mx-auto"> Hello {{user}}</h2>
+            <h3 class="mt-5">Manage your account details !</h3>
+            <ul class="profile-management-list">
+                <li>Update your profile details by clicking the "Update Profile" button.</li>
+                <li>Delete your profile by clicking the "Delete Account" button.<span>Note that deleting your profile will also delete any related bookings.</span></li>
+                </ul>
+
+            <div>
+    <h3 class="text-center mt-5"> My Details </h3>
+    <hr>
+    <div >
+    <p class="text-center">Username:{{user}}</p>
+    <p class="text-center">email:{{user.email}}</p>
+</div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     # apps
     'affirmations',
     'home',
+    'myprofile',
 ]
 
 # SITE_ID is a setting that specifies the ID of the current site in a multi-site configuration.
