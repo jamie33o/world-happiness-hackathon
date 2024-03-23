@@ -39,17 +39,17 @@
     
     {% block corecss %}   
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">  
-
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@300;500;600;700&family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">   
+      
     {% endblock %}
 
     {% block extra_css %}
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@300;500;600;700&family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
-          
-{% endblock %}
+    {% endblock %}
+
 
     {% block corejs %}
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -83,8 +83,12 @@
               {% if user.is_authenticated %}
                <!-- Display logout link when the user is authenticated -->
                <li class="nav-item">
-                <a class="oswald nav-link {% if 'affirmations' in request.path %}text-white{% endif %}" aria-current="page" href="{% url 'affirmations' %}">My Affirmatives</a>
-              </li> 
+                <a class="oswald nav-link {% if 'affirmations' in request.path and not 'group_affirmations' in request.path %}text-white{% endif %}" aria-current="page" href="{% url 'affirmations' %}">My Affirmatives</a>
+              </li>
+              <li class="nav-item">
+                <a class="oswald nav-link {% if 'group_affirmations' in request.path %}text-white{% endif %}" aria-current="page"
+                  href="{% url 'group_affirmations' %}">Group Affirmations</a>
+              </li>
               <li class="nav-item">
                 <a class="oswald nav-link {% if request.path == profile_url %}text-white{% endif %}" aria-current="page" href="{% url 'profile' %}">Profile</a>
               </li> 
