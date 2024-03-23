@@ -4,6 +4,7 @@
 
 Welcome to SkyNet, your new best friend for fostering positivity, mindfulness, and personal growth. Our platform is designed to be an oasis of motivation, allowing you to create, manage, and reflect upon personal affirmations in a supportive environment. Let's embark on this journey to a more positive you!
 
+
 ---
 
 ## **SUBMISSION**
@@ -67,19 +68,18 @@ SkyNet offers enhanced mental health, increased positivity, and personal growth.
 - **Discover and Explore**: Smooth navigation across the app.
 - **Spread the Positivity**: Share affirmations for additional support.
 
+
 ---
 
 ## **Getting Started** 🌱
-
 1. **Download the App**: Available on iOS and Android.
 2. **Create Your Account**: Get started on your positivity journey.
 3. **Dive into Features**: Personalize your experience with SkyNet.
-   
+
 
 ## **Need Help?** 🆘
 
 For support, reach out to us at [support@skynet-affirmations.com](mailto:support@skynet-affirmations.com). We're here to assist you!
-
 
 ## **Tech**🔧
 SkyNet is built using a tech stack that includes **HTML, CSS, JavaScript, Python, and Django**. The project showcases our creative use of CSS frameworks for a compelling design, Django for robust backend operations, and JavaScript for a responsive and interactive user interface.
@@ -87,14 +87,14 @@ SkyNet is built using a tech stack that includes **HTML, CSS, JavaScript, Python
 ## **Credits** 📜
 The creation of SkyNet was inspired by a shared vision to contribute to a world where technology supports mental and emotional well-being. We extend our gratitude to the open-source community, particularly the contributors to [Django](https://docs.djangoproject.com/en/3.2/), [Bootstrap](https://getbootstrap.com/), and the stunning visuals from [Unsplash](https://unsplash.com/) that have made this app not only functional but visually inspiring.
 
-
 ## **Join the Movement** 👐
 
 Interested in contributing? SkyNet thrives on community input and innovation. Check our contribution guidelines for more information.
 
----
 
 ## **License** 🔒
 
 SkyNet is licensed under [License Name], promoting sharing and
+
+---
 
