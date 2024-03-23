@@ -2,24 +2,17 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import AudioRecording, TextAffirmations
 from .forms import AudioRecordingForm, TextAffirmationsForm
 
-
+@login_required
 def affirmation_page(request):
-    if request.user.is_authenticated:
-        form = AudioRecordingForm()
-        recordings = AudioRecording.objects.filter(user=request.user)
-        return render(request, 'affirmations/affirmations.html',
-                  {'form': form, 'recordings': recordings})
-    else:
-        messages.add_message(
-                request,
-                messages.INFO,
-                'Please login/register first to view this page')
-    return redirect('home')
-
-
+    form = AudioRecordingForm()
+    recordings = AudioRecording.objects.filter(user=request.user)
+    return render(request, 'affirmations/affirmations.html',
+                {'form': form, 'recordings': recordings})
+        
 @csrf_exempt
 def upload_recording(request):
     try:
@@ -39,7 +32,7 @@ def upload_recording(request):
         print(e)
 
 
-
+@login_required
 def delete_recording(request, recording_id):
     recording = get_object_or_404(AudioRecording, id=recording_id)
     if request.method == 'POST':
@@ -50,7 +43,7 @@ def delete_recording(request, recording_id):
 
     return redirect('affirmations')
 
-
+@login_required
 def group_affirmations(request):
     if request.method == 'POST':
         form = TextAffirmationsForm(request.POST)
@@ -72,8 +65,7 @@ def group_affirmations(request):
     return render(request,
                   'affirmations/group_affirmations.html', context)
 
-
-
+@login_required
 def delete_message(request, message_id):
     message = get_object_or_404(TextAffirmations, id=message_id)
     if request.method == 'POST':
@@ -84,6 +76,8 @@ def delete_message(request, message_id):
 
     return redirect('group_affirmations')
 
+
+@login_required
 def edit_message(request, message_id):
     message = get_object_or_404(TextAffirmations, id=message_id)
     

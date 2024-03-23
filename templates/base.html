@@ -46,7 +46,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@300;500;600;700&family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">   
       
     {% endblock %}
-    
+
     {% block extra_css %}
     {% endblock %}
 
@@ -83,7 +83,7 @@
               {% if user.is_authenticated %}
                <!-- Display logout link when the user is authenticated -->
                <li class="nav-item">
-                <a class="oswald nav-link {% if 'affirmations' in request.path %}text-white{% endif %}" aria-current="page" href="{% url 'affirmations' %}">My Affirmatives</a>
+                <a class="oswald nav-link {% if 'affirmations' in request.path and not 'group_affirmations' in request.path %}text-white{% endif %}" aria-current="page" href="{% url 'affirmations' %}">My Affirmatives</a>
               </li>
               <li class="nav-item">
                 <a class="oswald nav-link {% if 'group_affirmations' in request.path %}text-white{% endif %}" aria-current="page"
