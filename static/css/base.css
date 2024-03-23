@@ -143,16 +143,16 @@ font-family:'Oswald', sans-serif;
     background-color:#fdf0d5;
 }
 
-.btn{
-    margin-top:10px;
-    width:80%;
-    opacity:0.9;
-    Font-weight:700;
-    letter-spacing:2px;
-    color:black;
-    background-color:#ffb703;
-    border-radius:9px;
-    font-size:22px;
+.btn {
+    margin-top: 10px;
+    width: 80%;
+    opacity: 0.9;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: black;
+    background-color:#ffb703; 
+    border-radius: 9px;
+    font-size: 22px;
     border: 2px dotted black;
 }
 
@@ -178,6 +178,7 @@ h2{
     background-color: #3a5a40;
 }
 
+/*  styles for bigger screen sizes */
 @media only screen and (min-width:767px) {
     .nav-link, .text{
         font-size:22px;
