@@ -10,8 +10,7 @@ def affirmation_page(request):
     if request.user.is_authenticated:
         form = AudioRecordingForm()
         recordings = AudioRecording.objects.filter(user=request.user)
-        return render(request, 'affirmations/affirmations.html',
-                  {'form': form, 'recordings': recordings})
+        return render(request, 'affirmations/affirmations.html', {'form': form, 'recordings': recordings})
     else:
         messages.add_message(
                 request,
