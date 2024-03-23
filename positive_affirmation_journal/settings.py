@@ -14,14 +14,11 @@ from pathlib import Path
 import os
 import dj_database_url
 
-
 if os.path.isfile('env.py'):
     import env
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -33,8 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['affirm-app-057148428853.herokuapp.com', '127.0.0.1',
-                 '8000-jamie33o-worldhappiness-m9t891s0owt.ws-eu110.gitpod.io']                                                                 
-
+                 '8000-jamie33o-worldhappiness-m9t891s0owt.ws-eu110.gitpod.io']
 
 # Application definition
 
@@ -46,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # allauth
-    'django.contrib.sites', 
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -64,6 +60,12 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 EMAIL_BACKENDS = 'django.core.mail.backends.console.EmailBackend'
+# Mail Settings
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 # These three email settings here make it so that an email is required to register for the site.
@@ -93,14 +95,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'positive_affirmation_journal.urls'
 
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'templates', 'allauth'),
-            ],
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -113,7 +114,7 @@ TEMPLATES = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = [  
+AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 
@@ -122,7 +123,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 WSGI_APPLICATION = 'positive_affirmation_journal.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -138,7 +138,6 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -158,7 +157,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -172,14 +170,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -209,7 +205,6 @@ if 'USE_AWS' in os.environ:
     # Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
