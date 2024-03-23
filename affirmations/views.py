@@ -5,12 +5,20 @@ from django.contrib import messages
 from .models import AudioRecording
 from .forms import AudioRecordingForm
 
-def affirmation_page(request):
-    form = AudioRecordingForm()
-    recordings = AudioRecording.objects.filter(user=request.user)
 
-    return render(request, 'affirmations/affirmations.html',
+def affirmation_page(request):
+    if request.user.is_authenticated:
+        form = AudioRecordingForm()
+        recordings = AudioRecording.objects.filter(user=request.user)
+        return render(request, 'affirmations/affirmations.html',
                   {'form': form, 'recordings': recordings})
+    else:
+        messages.add_message(
+                request,
+                messages.INFO,
+                'Please login/register first to view this page')
+    return redirect('home')
+
 
 @csrf_exempt
 def upload_recording(request):
