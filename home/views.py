@@ -3,7 +3,10 @@ from affirmations.models import TextAffirmations
 
 
 def home_page(request):
-    text_affirmation = TextAffirmations.objects.filter(user=request.user)
-    return render(request, 'home/index.html', 
-                  {'home_url': 'home', 'text_affirmation':text_affirmation})
+    
+    context = {'home_url': 'home',}
+    if request.user.is_authenticated:
+        text_affirmation = TextAffirmations.objects.filter(user=request.user)
+        context['text_affirmation'] = text_affirmation
+    return render(request, 'home/index.html', context)
 
