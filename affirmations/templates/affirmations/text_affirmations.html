@@ -20,11 +20,9 @@
 
                                 <img src="{{ affirmation.user.profile_image.url }}" width="80" class=" rounded-circle img-responsive ">
                                 {% else %}
-                                <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" width="80" class=" rounded-circle img-responsive ">
+                                <img src="{% static 'images/no-image.jpg' %}" width="80" class=" rounded-circle img-responsive ">
 
                                 {% endif %}
-
-
                             </div>
                             <div class="col-md-10 col-xs-10">
                                 <div class="d-flex flex-dir-row justify-content-between">
@@ -33,29 +31,22 @@
                                         <time datetime="2009-11-13T20:00" class="m-3"> {{ affirmation.created_at }}</time>
                                     </div>
                                     <div>
-                                        {% if affirmation.user == request.user %}
+                                        
                                         <button type="button" class="btn-info btn-sm m-2" data-bs-toggle="modal" data-bs-target="#edit-modal{{ affirmation.id }}">
                                             <i class="fa fa-pencil fa-2x" type="submit" aria-hidden="true"></i>
                                         </button>   
                                         <button type="button"  class="btn-danger btn-sm m-2" data-bs-toggle="modal" data-bs-target="#delete-modal{{ affirmation.id }}">
                                             <i class="fa fa-x fa-2x" type="submit" aria-hidden="true"></i>
                                         </button>                                   
-                                        {% endif %}
+                                       
                                     </div>
                                 </div>
                                 <p class="mt-3 h3 fw-normal">{{ affirmation.message }}</p>
-                                {% if affirmation.recording %}
-                                    <audio controls>
-                                        <source src="{{affirmation.recording.audio_file.url}}" type="audio/mpeg">
-                                        Your browser does not support the audio element.
-                                    </audio>  
-                                {% endif %}
                             
                             </div>
                         </div>
                     </div>
                 
-                    {% if affirmation.user == request.user %}
                     <!-- delete Modal -->
                     <div class="modal fade" id="delete-modal{{ affirmation.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -114,25 +105,21 @@
                         </div>
                         </div>
                     </div>
-                    {% endif%}
                     {% endfor %}
                 {% else %}
-                    <h3 class="h1 text-center my-5">Add the First Group Affirmation</h3>
+                    <h3 class="h1 text-center my-5">Add the First Text Affirmation</h3>
                 {% endif %}
             </div>
         </div>
         <div class="col-12">
             <div class="panel-footer">
-                <form method="post" action="{% url 'group_affirmations' %}" id="message-form">
+                <form method="post" action="{% url 'text_affirmations' %}" id="message-form">
                     {% csrf_token %}
                     <div class="input-group p-2">
 
                         <input id="btn-input" type="text" class="form-control input-sm chat_input" name="message" placeholder="Write your message here..." />
                         <span class="input-group-btn">
-                        <button class="btn-primary btn w-100 p-0" id="btn-chat"><i class="fa fa-send fa-1x" type="submit" aria-hidden="true"></i></button>
-                        <button type="button"  class="btn-danger btn w-100 p-0" data-bs-toggle="modal" data-bs-target="#attach-modal">
-                            <i class="fa fa-plus fa-1x" type="submit" aria-hidden="true"></i>
-                        </button>  
+                        <button class="btn-primary btn w-100 p-0" id="btn-chat"><i class="fa fa-send fa-1x" type="submit" aria-hidden="true"></i></button>  
                         </span>
                     </div>
                 </form>
@@ -141,36 +128,6 @@
     </div>
 </div>
 
-
-   <!-- attachment Modal -->
-   <div class="modal fade" id="attach-modal{{ affirmation.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Attach Recording</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-           
-                {% if recordings %}
-                <ul class="list-unstyled p-2 " id='ul'>
-                    {% for recording in recordings %}
-                        <li class="border p-2 my-auto">
-                        <audio controls>
-                            <source src="{{recording.audio_file.url}}" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                        <button type="button" data-id="{{ recording.id}}" class="btn-warning btn-sm m-2 add-btn" data-bs-dismiss="modal">Add</button>
-                        </li>
-                    {% endfor%}
-                    </ul>
-                {% else %}
-                <h3 class="h1 text-center my-5">No Recordings</h3>
-                {% endif %}
-        </div>
-    </div>
-    </div>
-</div>
 {% endblock %}
 
 {% block postloadjs %}

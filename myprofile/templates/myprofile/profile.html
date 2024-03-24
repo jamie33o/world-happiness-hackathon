@@ -20,7 +20,7 @@
                         <img class="img-account-profile img-thumbnail rounded-circle mb-2" src="{{ request.user.profile_image.url }}" height="215" width="215" alt="profile picture">
 
                         {% else %}
-                        <img class="img-account-profile img-thumbnail rounded-circle mb-2" src="{% static 'profile_placeholder.webp' %}" height="415" width="415" alt="profile picture">
+                        <img class="img-account-profile img-thumbnail rounded-circle mb-2" src="{% static 'images/no-image.jpg' %}" height="215" width="215" alt="profile picture">
                         {% endif %}
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>

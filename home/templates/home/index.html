@@ -79,6 +79,14 @@ let affirmations = [
     "I am the architect of my own destiny.",
     "I am grateful for the gift of life and all its experiences."
 ]
+{% if text_affirmation %}
+    affirmations =[
+    {% for affirmation in text_affirmation %}
+        "{{ affirmation.message }}" ,
+    {% endfor %}
+]
+{% endif %}
+
 
 $('.generator-btn').click(function(){
     let num = getRandomNumber()
@@ -89,7 +97,7 @@ $('.generator-btn').click(function(){
 })
 
 function getRandomNumber() {
-  return Math.round(Math.random() * (20 - 0) + 0);
+  return Math.round(Math.random() * ( affirmations.length - 1) + 0);
 }
 
 $('.start-journey').mouseenter(function() {

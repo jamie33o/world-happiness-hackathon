@@ -11,7 +11,7 @@ def affirmation_page(request):
 
     form = AudioRecordingForm()
     recordings = AudioRecording.objects.filter(user=request.user)
-    return render(request, 'affirmations/affirmations.html',
+    return render(request, 'affirmations/recorded_affirmations.html',
                 {'form': form, 'recordings': recordings})
         
 @csrf_exempt
@@ -44,33 +44,28 @@ def delete_recording(request, recording_id):
 
     return redirect('affirmations')
 
+
 @login_required
-def group_affirmations(request):
+def text_affirmations(request):
     if request.method == 'POST':
         form = TextAffirmationsForm(request.POST)
         if form.is_valid():
             text_affirmation = form.save(commit=False)
             text_affirmation.user = request.user
-            recording_id = request.POST.get('recording_id')  
 
-            if recording_id:
-                recording = get_object_or_404(AudioRecording, id=recording_id)
-                text_affirmation.recording = recording
             text_affirmation.save()
-            messages.success(request, 'Message sent successfully.')
-            return redirect('group_affirmations')
-        messages.error(request, 'Error could not send message')
-        return redirect('group_affirmations')
+            messages.success(request, 'Affirmation saved successfully.')
+            return redirect('text_affirmations')
+        messages.error(request, form.errors)
+        return redirect('text_affirmations')
     else:
-        text_affirmations = TextAffirmations.objects.all()
-        recordings = AudioRecording.objects.filter(user=request.user)
+        affirmations = TextAffirmations.objects.filter(user=request.user)
         context = {
-            'recordings': recordings,
-            'text_affirmations': text_affirmations   
+            'text_affirmations': affirmations   
             }
 
     return render(request,
-                  'affirmations/group_affirmations.html', context)
+                  'affirmations/text_affirmations.html', context)
 
 @login_required
 def delete_message(request, message_id):
