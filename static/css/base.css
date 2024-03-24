@@ -201,6 +201,9 @@ main {
     color:yellow !important;
 }
 
+#myAudio {
+    display: none; 
+}
 
 .start-journey{
     background-color: #168aad;
