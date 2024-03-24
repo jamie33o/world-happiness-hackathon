@@ -73,10 +73,10 @@ def delete_message(request, message_id):
     if request.method == 'POST':
         message.delete()
         messages.success(request, 'Message deleted successfully.')
-        return redirect('group_affirmations')
+        return redirect('text_affirmations')
     messages.error(request, 'Error could not delete Message')
 
-    return redirect('group_affirmations')
+    return redirect('text_affirmations')
 
 
 @login_required
@@ -88,7 +88,7 @@ def edit_message(request, message_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Message updated successfully.')
-            return redirect('group_affirmations')
+            return redirect('text_affirmations')
         else:
             messages.error(request, 'Error updating message. Please check the form.')
-    return redirect('group_affirmations')
+    return redirect('text_affirmations')
