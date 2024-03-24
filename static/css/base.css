@@ -4,19 +4,32 @@
     box-sizing: border-box;
  }
 
- .profile-container{
-    height:100vh;
- }
  /* font-family */
  .lobster{
     font-family:'Lobster', cursive;
  }
 .oswald{
-font-family:'Oswald', sans-serif;
+    font-family:'Oswald', sans-serif;
 }
 
 .messages{
     z-index: 100;
+}
+
+body{
+    position: sticky;
+    background-image:url("/static/images/background-image.avif");
+    height:100%;
+    width: 100%;
+    background-size: cover;
+    background-position:center;
+    z-index: -1;
+    margin: auto;
+    max-width: 2800px;
+}
+
+main {
+    min-height: 100vh;
 }
 
 /* //////////////////// allauth templates //////////////////// */
@@ -58,13 +71,15 @@ font-family:'Oswald', sans-serif;
     justify-content: space-evenly;
     width: 90%;
     min-height: 400px;
-    background: #57abb889;
+    background: #57abb8f2;
     flex-direction: column;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
     word-wrap: break-word;
+    z-index: 1040;
+
 }
 
 .user_card input{
@@ -131,12 +146,7 @@ font-family:'Oswald', sans-serif;
 }
 
  /* styles for home page */
- .background-image{
-    background-image:url("/static/images/background-image.avif");
-    height:100vh;
-    background-size: cover;
-    background-position:center;
-} 
+
 
 .main-heading{
     color:black; 
