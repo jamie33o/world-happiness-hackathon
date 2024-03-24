@@ -16,7 +16,15 @@
                     <div class="border">   
                         <div class="row p-2">
                             <div class="col-md-2 col-xs-2">
+                                {% if affirmation.user.profile_image %}
+
+                                <img src="{{ affirmation.user.profile_image.url }}" width="80" class=" rounded-circle img-responsive ">
+                                {% else %}
                                 <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" width="80" class=" rounded-circle img-responsive ">
+
+                                {% endif %}
+
+
                             </div>
                             <div class="col-md-10 col-xs-10">
                                 <div class="d-flex flex-dir-row justify-content-between">
