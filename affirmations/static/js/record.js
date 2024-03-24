@@ -86,23 +86,18 @@ function toggleTimer() {
 function makeLink(){
   let blob = new Blob(chunks, {type: media.type })
     , url = URL.createObjectURL(blob)
-    , li = document.createElement('li')
-    , mt = document.createElement(media.tag)
-    , hf = document.createElement('a')
   ;
-  mt.controls = true;
-  mt.src = url;
-
-  hf.href = url;
-  hf.download = `${counter++}${media.ext}`;
-  hf.innerHTML = `donwload ${hf.download}`;
-  li.appendChild(mt);
-  li.appendChild(hf);
-  $(li).append(`<button data-url="upload_recording/" class="audio-upload btn-primary btn-sm ml-3">Save</button>`)
-  $(ul).prepend(li);
  
+  $(ul).prepend(`<li class="border p-2 d-flex justify-content-between">
+                  <audio controls>
+                      <source src="${url}" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                  </audio>
+                  <button data-url="upload_recording/" class="border audio-upload btn-success btn-sm ">Save</button>
+                </li>`)
+
   // Create a File object
-  let file = new File([blob], hf.innerHTML);
+  let file = new File([blob], `donwload ${counter++}${media.ext}`);
 
   // Create a new FormData object and append the File object
   formData = new FormData();
@@ -119,9 +114,9 @@ $(document).on('click', '.audio-upload', function(){
         data: formData,
         processData: false,
         contentType: false,
-     //    headers: {'X-CSRFToken': csrf}, 
         success: function(response) {
             self.replaceWith(`<p>Saved</p>`)
+
         },
         error: function(xhr, status, error) {
             console.error('There was a problem with the file upload:', error);

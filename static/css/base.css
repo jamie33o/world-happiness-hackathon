@@ -16,6 +16,15 @@
     z-index: 100;
 }
 
+.modal-open {
+    overflow: auto !important;
+    padding-right: 0  !important;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: #aa93128e; 
+}
+
 body{
     position: sticky;
     background-image:url("/static/images/background-image.avif");
@@ -191,9 +200,13 @@ main {
 .nav-link:hover{
     color:yellow !important;
 }
+
+
 .start-journey{
     background-color: #168aad;
     color:yellow;
+    min-width: 70%;
+    padding: 20px 0;
 }
 
 /* styles for profile page */

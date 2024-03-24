@@ -14,7 +14,7 @@
                 <p class="text mw-100 mx-auto my-auto bg-danger rounded p-3">With <span class="span-text text-white">AffirmApp</span>, you have the power to write and store your personalized affirmations. Express your unique aspirations, goals, and dreams in your own words, and revisit them whenever you need a boost of positivity and motivation. Stay motivated and inspired as you witness the positive changes unfolding in your life.</p>
             </section>
             <div class="text-center lobster">
-                <h2 class="start-journey  mt-3 rounded p-3 mx-auto">Start Your Journey Today !</h2>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#question-modal" class="start-journey btn btn-lg lobster mx-auto mt-3 mb-3" >Start Your Journey Today !</a>
 
                 <button type="button" data-bs-toggle="modal" data-bs-target="#generator-modal" class="generator-btn btn btn-light btn-lg lobster d-block mx-auto mt-3 mb-3" >Generate Affirmation</a>
             </div>
@@ -25,14 +25,30 @@
 <!-- Modal -->
 <div class="modal fade" id="generator-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content ">
+    <div class="modal-content bg-success">
         <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Your Affirmation</h5>
+        <h5 class="modal-title montserrat h3" id="exampleModalLabel">Your Affirmation</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            
-        </div>
+    </div>
+    <div class="modal-body main-message">
+        
+    </div>
+    </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="question-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-success">
+        <div class="modal-header">
+        <h5 class="modal-title montserrat h3" id="exampleModalLabel">Every Problem Has A Solution</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body main-message">
+        
+    </div>
     </div>
     </div>
 </div>
@@ -68,12 +84,44 @@ $('.generator-btn').click(function(){
     let num = getRandomNumber()
     let aff = affirmations[num]
 
-   $('#generator-modal .modal-body').html(`<h3 class="">${aff}</h3>`)
+   $('#generator-modal .modal-body').html(`<h3 class="lobster text-center m-5 h1">${aff}</h3>`)
 
 })
 
 function getRandomNumber() {
   return Math.round(Math.random() * (20 - 0) + 0);
+}
+
+$('.start-journey').mouseenter(function() {
+    $(this).text(`Do You Have A Problem In Life?`)
+}).mouseleave(function() {
+    $(this).text("Start Your Journey Today!");
+});
+
+if (window.innerWidth < 1200){
+    $('.start-journey').text(`Do You Have A Problem In Life? Then Click Now`)
+}
+
+
+$('.start-journey ').click(function(){
+    dontWorry('yes')
+})
+
+
+let counter = 0
+function dontWorry(answer){
+    let questions =["Do You Have A Problem In Life?", "Can You Do Something About It?", 'Then Why Worry?' ]
+
+    if(answer == 'no'){
+        counter= 2;
+    }
+    $('#question-modal .modal-body').html(`<div class="text-center w-100"><h3 class="lobster text-center m-5 h1">${questions[counter]}</h3>
+        <button class="btn-sm btn-success m-3" onclick="dontWorry('yes')">Yes</button><button class="btn-sm btn-danger m-3" onclick="dontWorry('no')">No</button></div>  `)
+    if (answer == 'yes' && counter < 2){
+        counter++;
+    }else{
+        counter=0;
+    }
 }
 
 </script>
