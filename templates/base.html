@@ -140,19 +140,39 @@
       {% block content %}
 
       {% endblock %}  
-      
+      <div class="d-none">
         <audio id="myAudio" controls >
           <source src="{% static 'music/med.mp3' %}" type="audio/mp3">
           Your browser does not support the audio element.
         </audio>
-            
+      </div>
        
     </main>
 
-    <footer class="text-center">
+    <footer class="text-center mt-auto footer-text text-white bg-success  lobster p-3">
       {% block page_footer %}
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+            <img class="rounded-circle" src="https://avatars.githubusercontent.com/u/123118240?v=4" width="100" alt="Image 1">
+            <a href="https://www.linkedin.com/in/jamie2023/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BUq8pxDzSRU2GyTgUuaxtew%3D%3D" target="_blank" class="h3 d-block text-white w-100">Jamie O'Niell LinkedIn</a>
+          </div>
+          <div class="col-md-3">
+            <img class="rounded-circle" src="https://media.licdn.com/dms/image/D4E03AQEbBP52yHUswg/profile-displayphoto-shrink_100_100/0/1688633135008?e=1717027200&v=beta&t=BWiW3o17Xr4KqGbOBianzYuE6TZP2jHqGjB2SkplToU" width="100" alt="Image 1">
+            <a href="https://www.linkedin.com/in/monika-mak?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACN6kcwB5oxbkTIuA7s1nNWOxmKfdE3-eN4&lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3B7GwyDVLbQ2eVYzL4Qd1QBQ%3D%3D" target="_blank" class="h3 d-block text-white w-100">Monika Mak LinkedIn</a>
+          </div>
+          <div class="col-md-3">
+            <img class="rounded-circle" src="https://media.licdn.com/dms/image/C5603AQHzYvTNwbJIPw/profile-displayphoto-shrink_400_400/0/1664228354373?e=1717027200&v=beta&t=f2UIdjETqQXqcAYX9eCEwWnj29FPrqA2xc4JgcmkQAI" width="100" alt="Image 1">
+            <a href="https://www.linkedin.com/in/sopiko-abulidze-69a563251/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B84Jdrbp5Rhy88W7Fzc6OPg%3D%3D" target="_blank" class="h3 d-block text-white w-100">Sopiko Abulidze LinkedIn</a>
+          </div>
+          <div class="col-md-3">
+            <img class="rounded-circle" src="https://avatars.githubusercontent.com/u/93150581?v=4" width="100" alt="Image 1">
+            <a href="https://www.linkedin.com/in/hennadii-plemiannikov?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAD-cEFUBYSSiW1OCgk4FbN0g_QlIKnQER6U&lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3BWluLrG8HSF6Jju1SuEpOHg%3D%3D" target="_blank" class="h3 d-block text-white w-100">Hennadii Plemiannikov LinkedIn</a>
+          </div>
+        </div>
+      </div>
 
-    <p class="mt-auto footer-text text-white bg-success  lobster p-3">&copy;24/03-Hackaton-Team3</p>
+        <p class="mt-auto footer-text text-white bg-success  lobster p-3">&copy;24/03-Team-SkyNet</p>
 
       {% endblock %}
     </footer>
