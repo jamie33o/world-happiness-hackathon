@@ -15,9 +15,67 @@
             </section>
             <div class="text-center lobster">
                 <h2 class="start-journey  mt-3 rounded p-3 mx-auto">Start Your Journey Today !</h2>
-                <a href="{% url 'affirmations' %}" class="btn btn-light btn-lg lobster d-block mx-auto mt-3 mb-3" aria-label="my affirmatives">My Affirmatives</a>
+
+                <button type="button" data-bs-toggle="modal" data-bs-target="#generator-modal" class="generator-btn btn btn-light btn-lg lobster d-block mx-auto mt-3 mb-3" >Generate Affirmation</a>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="generator-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content ">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Your Affirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            
+        </div>
+    </div>
+    </div>
+</div>
 {% endblock content %}
+
+{% block postloadjs %}
+<script>
+
+let affirmations = [
+    "I am worthy of love and respect.",
+    "I believe in myself and my abilities.",
+    "I am deserving of happiness and fulfillment.",
+    "I attract positive energy into my life.",
+    "I am grateful for all that I have.",
+    "I trust in the process of life.",
+    "I embrace change and growth.",
+    "I am surrounded by abundance and prosperity.",
+    "I radiate confidence and self-assurance.",
+    "I am capable of overcoming any challenge.",
+    "I choose joy and positivity every day.",
+    "I am at peace with who I am.",
+    "I am surrounded by loving and supportive people.",
+    "I am resilient and can bounce back from setbacks.",
+    "I am worthy of success and achievement.",
+    "I am enough just as I am.",
+    "I forgive myself and others for any past mistakes.",
+    "I attract opportunities for personal and professional growth.",
+    "I am the architect of my own destiny.",
+    "I am grateful for the gift of life and all its experiences."
+]
+
+$('.generator-btn').click(function(){
+    let num = getRandomNumber()
+    let aff = affirmations[num]
+
+   $('#generator-modal .modal-body').html(`<h3 class="">${aff}</h3>`)
+
+})
+
+function getRandomNumber() {
+  return Math.round(Math.random() * (20 - 0) + 0);
+}
+
+</script>
+{% endblock %}
+

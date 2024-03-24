@@ -83,7 +83,7 @@
               {% if user.is_authenticated %}
                <!-- Display logout link when the user is authenticated -->
                <li class="nav-item">
-                <a class="oswald nav-link {% if 'affirmations' in request.path and not 'group_affirmations' in request.path %}text-white{% endif %}" aria-current="page" href="{% url 'affirmations' %}">My Affirmatives</a>
+                <a class="oswald nav-link {% if 'affirmations' in request.path and not 'group_affirmations' in request.path %}text-white{% endif %}" aria-current="page" href="{% url 'affirmations' %}">My Affirmations</a>
               </li>
               <li class="nav-item">
                 <a class="oswald nav-link {% if 'group_affirmations' in request.path %}text-white{% endif %}" aria-current="page"
