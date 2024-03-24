@@ -7,6 +7,7 @@ let log = console.log.bind(console),
   start = id('start'),
   stop = id('stop'),
   timer = id('timer'),
+  $firstRec = $('.first-rec'),
   stream,
   recorder,
   timerInterval,  
@@ -95,6 +96,8 @@ function makeLink(){
                   </audio>
                   <button data-url="upload_recording/" class="border audio-upload btn-success btn-sm ">Save</button>
                 </li>`)
+
+  $firstRec.remove()
 
   // Create a File object
   let file = new File([blob], `donwload ${counter++}${media.ext}`);
