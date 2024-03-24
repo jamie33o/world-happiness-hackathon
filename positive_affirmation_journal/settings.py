@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    #crispy forms
+    # crispy forms
     'crispy_forms',
     'crispy_bootstrap4',
     # aws
@@ -69,6 +69,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 # These three email settings here make it so that an email is required to register for the site.

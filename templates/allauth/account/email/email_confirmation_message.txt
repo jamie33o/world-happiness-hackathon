@@ -1,9 +1,21 @@
-{% load account %}{% user_display user as user_display %}{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Hello from {{ site_name }}!
+{% load account %}{% user_display user as user_display %}{% load i18n %}{% autoescape off %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+Hello and welcome to {{ site_name }}!
 
-You're receiving this e-mail because user {{ user_display }} has given yours as an e-mail address to connect their account.
+We're thrilled to have you join our community, dedicated to uplifting and improving mental health through positive affirmations. User {{ user_display }}, that's you, has registered this email address with us.
 
-To confirm this is correct, go to {{ activate_url }}
+To start your journey of positivity and self-growth, please confirm your email by clicking the link below:
+
+{{ activate_url }}
+
+Your path to a happier, more fulfilled life starts with a single click. Let's make it happen together!
+
 {% endblocktrans %}
-{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Thank you from {{ site_name }}!
-{{ site_domain }}{% endblocktrans %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+Thank you for being a part of {{ site_name }}! Together, we can make a difference.
+
+Warmest regards,
+The {{ site_name }} Team
+{{ site_domain }}
+{% endblocktrans %}
 {% endautoescape %}
