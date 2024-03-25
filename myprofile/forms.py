@@ -21,12 +21,12 @@ class ProfileUpdateForm(forms.ModelForm):
 
         Specifies the model and fields to be included in the form.
         """
-        model = CustomUser
-        fields = ['first_name',
-                  'last_name',
-                  'username',
-                  'email',
-                  'profile_image',
-                  ]
 
-       
+        model = CustomUser
+        fields = [
+            "first_name",
+            "last_name",
+            "username",
+            "email",
+            "profile_image",
+        ]

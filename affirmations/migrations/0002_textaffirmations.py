@@ -9,18 +9,40 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('affirmations', '0001_initial'),
+        ("affirmations", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='TextAffirmations',
+            name="TextAffirmations",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('messsage', models.CharField(blank=True, max_length=254, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('recording', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='affirmations.audiorecording')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("messsage", models.CharField(blank=True, max_length=254, null=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "recording",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to="affirmations.audiorecording",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

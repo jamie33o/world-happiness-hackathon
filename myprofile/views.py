@@ -7,33 +7,32 @@ from django.contrib import messages
 from .forms import ProfileUpdateForm
 
 
-
-@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name="dispatch")
 class ProfileView(View):
 
-    template_name = 'myprofile/profile.html'
+    template_name = "myprofile/profile.html"
 
     def get(self, request, **kwargs):
 
         user_form = ProfileUpdateForm(instance=request.user)
 
         context = {
-            'user_form': user_form,
-            
+            "user_form": user_form,
         }
 
         return render(request, self.template_name, context)
 
     @method_decorator(require_POST)
     def post(self, request):
-      
-        user_form = ProfileUpdateForm(request.POST,
-                                      request.FILES, instance=request.user)
+
+        user_form = ProfileUpdateForm(
+            request.POST, request.FILES, instance=request.user
+        )
 
         if user_form.is_valid():
             user_form.save()
-            messages.success(request, 'Profile Updated!!')
+            messages.success(request, "Profile Updated!!")
         else:
             messages.error(request, user_form.errors)
 
-        return redirect('profile')
+        return redirect("profile")
